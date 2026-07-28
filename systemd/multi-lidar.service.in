@@ -1,0 +1,26 @@
+[Unit]
+Description=Automatic multi-LiDAR ROS 2 bringup
+After=systemd-udev-settle.service
+Wants=systemd-udev-settle.service
+
+[Service]
+Type=simple
+User=@USER@
+SupplementaryGroups=dialout
+WorkingDirectory=@WORKSPACE@
+
+Environment=HOME=@HOME@
+Environment=ROS_DOMAIN_ID=0
+Environment=PYTHONUNBUFFERED=1
+
+ExecStartPre=/usr/bin/udevadm settle --timeout=15
+ExecStart=@START_SCRIPT@
+
+Restart=on-failure
+RestartSec=5
+
+KillSignal=SIGINT
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target
