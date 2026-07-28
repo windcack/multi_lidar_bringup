@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.bak
+.vscode/
+.idea/
+.DS_Store
+
+build/
+install/
+log/
+
+*.db3
+*.mcap
+metadata.yaml
